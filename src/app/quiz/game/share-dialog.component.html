@@ -1,0 +1,21 @@
+<!-- Pop-up for challenge -->
+<div class="popup" >
+    <div class="popup-content">
+      <h3>🎮 Challenge! 🎮</h3>
+      <p>Your friend <strong>{{ data.username }}</strong> scored is <strong>{{ data.score }}</strong>!</p>
+      <p>Do you want to take the challenge?</p>
+      
+      <div class="button-group">
+        <button class="signup-btn" (click)="redirectToSignup()">Sign Up</button>
+        <button class="login-btn" (click)="redirectToLogin()">Login</button>
+      </div>
+      
+     
+    </div>
+  </div>
+  
+  <!-- Normal Result Display -->
+  <!-- <h2>🎉 Congratulations, {{ data.username }}! 🎉</h2>
+  <p>Your score: <strong>{{ data.score }}</strong></p>
+  <a [routerLink]="['/game']">🔄 Play Again</a> -->
+  

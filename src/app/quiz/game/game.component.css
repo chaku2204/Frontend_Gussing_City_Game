@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  background: linear-gradient(135deg, #000428, #004e92);
+  color: #ffffff;
+  font-family: 'Press Start 2P', Arial, sans-serif;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* Apply to Clue List and Fun Facts */
+mat-list {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 242, 255, 0.5);
+}
+
+.mat-list-item {
+  font-size: 20px;
+  color: #fff;
+  text-shadow: 2px 2px 5px rgba(0, 242, 255, 0.9);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.mat-list-item mat-icon {
+  color: #ffcc00;
+  margin-right: 10px;
+}
+
+/* Fix Fun Facts Visibility */
+mat-list-item span {
+  color: #ffcc00;
+  font-weight: bold;
+  font-size: 18px;
+  text-shadow: 2px 2px 6px #000;
+}
+
+
+.game-container {
+  width: 90%;
+  margin: auto;
+  background: #1a1a2e;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 25px rgba(0, 242, 255, 0.8);
+  text-align: center;
+}
+
+.game-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 26px;
+  padding: 20px;
+  background: linear-gradient(45deg, #ff0080, #8000ff);
+  color: #fff;
+  border-radius: 12px;
+  text-shadow: 3px 3px 8px #000;
+}
+.spacer {
+  flex: 1;
+}
+
+.sub-title {
+  font-size: 20px;
+  margin: 20px 0;
+  color: #00f2ff;
+  text-shadow: 2px 2px 5px rgba(0, 242, 255, 0.7);
+}
+
+
+
+.full-width {
+  width: 70%;
+  font-size: 18px;
+  padding: 12px;
+}
+
+
+
+button {
+  font-size: 18px;
+  padding: 15px 25px;
+  margin: 10px;
+  background: linear-gradient(45deg, #ff0080, #8000ff);
+  color: white;
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 0px 15px rgba(255, 0, 128, 0.7);
+}
+
+button:hover {
+  background: linear-gradient(45deg, #8000ff, #ff0080);
+  transform: scale(1.1);
+  box-shadow: 0px 0px 20px rgba(255, 0, 128, 1);
+}
+
+/* Correct Answer Animation */
+.correct-answer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #00ff00;
+  text-shadow: 3px 3px 6px #000;
+  animation: glow 1s infinite alternate;
+  padding: 20px;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0px 0px 5px #00ff00; }
+  100% { text-shadow: 0px 0px 20px #00ff00; }
+}
+
+/* Wrong Answer Animation */
+.wrong-answer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ff0000;
+  animation: shake 0.5s ease-in-out;
+  padding: 20px;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(8px); }
+  75% { transform: translateX(-8px); }
+}
+
+/* Score */
+.score {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 3px 3px 6px #000;
+  margin-top: 26px;
+}

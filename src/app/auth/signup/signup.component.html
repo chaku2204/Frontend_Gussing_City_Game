@@ -1,0 +1,40 @@
+<div class="signup-container">
+  <mat-card class="signup-card">
+    <mat-card-title>⚡Gausing City Gamer⚡</mat-card-title>
+
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <mat-form-field class="custom-field">
+        <mat-label>🎮 Username</mat-label>
+        <input matInput formControlName="username">
+      </mat-form-field>
+
+      <mat-form-field class="custom-field">
+        <mat-label>📧 Email</mat-label>
+        <input matInput formControlName="email" required>
+        <mat-error *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">
+          Enter a valid email!
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="custom-field">
+        <mat-label>🔑 Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" required>
+        <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <mat-form-field class="custom-field">
+        <mat-label>🔒 Confirm Password</mat-label>
+        <input matInput [type]="hideConfirmPassword ? 'password' : 'text'" formControlName="confirmPassword" required>
+        <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword">
+          <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" class="signup-btn" type="submit" [disabled]="signupForm.invalid">
+        🚀 SIGN UP
+      </button>
+    </form>
+  </mat-card>
+</div>

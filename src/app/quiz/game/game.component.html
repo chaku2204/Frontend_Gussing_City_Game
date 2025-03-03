@@ -1,0 +1,119 @@
+<mat-card class="game-container">
+  <mat-toolbar class="game-title"
+    >🎮 Guess the City
+    <span class="spacer"></span>
+
+    <!-- Profile Dropdown -->
+    <button
+    mat-button
+   
+    style="
+      border-radius: 87px;
+      width: 37px;
+      display: flex;
+      padding: 0px;
+      background: linear-gradient(45deg, black, blue);
+      height: 54px;
+      margin: 0px;
+      margin-right: 8px;
+    "
+  (click)="generateShareableLink()">
+    <mat-icon style="margin: 0px">share</mat-icon>
+  </button>
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu"
+      style="
+        border-radius: 87px;
+        width: 37px;
+        display: flex;
+        padding: 0px;
+        background: linear-gradient(45deg, black, blue);
+        height: 54px;
+        margin: 0px;
+      "
+    >
+      <mat-icon style="margin: 0px">account_circle</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item style="width: 86%; margin: auto" (click)="logout()">
+        <mat-icon>logout</mat-icon> Logout
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-card-content class="game-content">
+    <h3 class="sub-title">🔍 Clues:</h3>
+    <mat-list>
+      <mat-list-item *ngFor="let clue of ClueList">
+        <mat-icon class="clue-icon">lightbulb</mat-icon>
+        <span>{{ clue["clue"] }}</span>
+      </mat-list-item>
+    </mat-list>
+
+    <h3 class="sub-title">🌍 Select a City:</h3>
+    <mat-form-field class="full-width">
+      <mat-label>City</mat-label>
+      <input
+        type="text"
+        matInput
+        [matAutocomplete]="auto"
+        [formControl]="cityControl"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayCity">
+        <mat-option *ngFor="let city of filteredOptions | async" [value]="city">
+          {{ city.city }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="!dissablebutton"
+        (click)="checkAnswer()"
+      >
+        Submit Answer
+      </button>
+      <button mat-raised-button color="warn" (click)="openScoreDialog()">
+        End Game
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        *ngIf="dissablebutton"
+        (click)="nextDestination()"
+      >
+        Next
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        *ngIf="dissablebutton"
+        (click)="startGame()"
+      >
+        Play Again
+      </button>
+    </div>
+
+    <div *ngIf="!isCorrectanswe && dissablebutton" class="wrong-answer">
+      ❌ Wrong Answer
+    </div>
+    <div *ngIf="isCorrectanswe && dissablebutton" class="correct-answer">
+      🎉 Correct! Well done!
+    </div>
+
+    <mat-list *ngIf="dissablebutton">
+      <h3 class="sub-title">Fun Facts</h3>
+      <mat-list-item *ngFor="let fun of funFact">
+        <span>{{ fun["funfact"] }}</span>
+      </mat-list-item>
+    </mat-list>
+
+    <p class="score">
+      ✅ Correct Answers: {{ score }} | ❌ Wrong Answers: {{ wrongAnswers }}
+    </p>
+  </mat-card-content>
+</mat-card>
