@@ -1,6 +1,8 @@
+[build]
+  command = "ng build --configuration=production"
+  publish = "dist/game-frontend"
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
