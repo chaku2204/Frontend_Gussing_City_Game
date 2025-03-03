@@ -1,8 +1,4 @@
-[build]
-  command: ng build
-commandOrigin: config
-publish: /opt/build/repo/dist/anglify
-publishOrigin: config
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
