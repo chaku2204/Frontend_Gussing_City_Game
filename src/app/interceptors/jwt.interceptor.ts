@@ -3,13 +3,17 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { CommonService } from '../services/common.service';
 
+
+const TOKEN_HEADER_KEY = 'Authorization';
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
+  router: any;
 
   constructor(private authService: CommonService) {}
 
@@ -18,8 +22,10 @@ export class JwtInterceptor implements HttpInterceptor {
     console.log(token);
     if (token) {
       request = request.clone({
-        setHeaders: { Authorization: `Bearer ${token}` }
+        setHeaders: { Authorization: `Bearer ${token}` },
+        withCredentials: true
       });
+      console.log(request);
     }
 
     return next.handle(request);
