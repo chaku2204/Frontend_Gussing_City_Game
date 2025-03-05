@@ -97,3 +97,9 @@ mat-icon {
         width: 90%;
     }
 }
+.custom-snackbar {
+    font-size: 20px !important;
+    font-weight: bold;
+    text-align: center;
+  }
+  
