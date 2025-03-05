@@ -7,7 +7,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class CommonService {
-  private apiUrl = environment.apiUrl
+  private apiUrl = environment.apiUrl;
+  
   constructor(private http: HttpClient) { }
   getRandomCity(): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/quiz/random-clues`);

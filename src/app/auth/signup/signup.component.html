@@ -31,6 +31,9 @@
           <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
         </button>
       </mat-form-field>
+      <mat-error *ngIf="signup_error?true:false">
+      {{ signup_error}}
+      </mat-error>
 
       <button mat-raised-button color="primary" class="signup-btn" type="submit" [disabled]="signupForm.invalid">
         🚀 SIGN UP

@@ -12,6 +12,7 @@ export class SignupComponent {
   signupForm: FormGroup;
   hidePassword = true;
   hideConfirmPassword = true;
+  signup_error = null;
 
   constructor(private fb: FormBuilder,private signupservice: CommonService,private router: Router ) {
     this.signupForm = this.fb.group({
@@ -35,9 +36,10 @@ export class SignupComponent {
         console.log(data);
         this.router.navigate(['/auth/login']); 
       },(err)=>{
-        console.log(err)});
+        this.signup_error = err.error? err?.error:"";
         
-      }
+      })
     
   }
+}
 }
