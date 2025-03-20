@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ShareDialog } from 'src/app/quiz/game/game.component';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 import { CommonService } from 'src/app/services/common.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class LoginComponent {
   hidePassword: boolean = true;
   invalid = false;
 
-  constructor(private fb: FormBuilder,private signupservice: CommonService,public dialog: MatDialog,private router: Router,private route: ActivatedRoute) {
+  constructor(private fb: FormBuilder,private signupservice: AuthserviceService,public dialog: MatDialog,private router: Router,private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       if (params['username'] && params['score']) {
          const username = params['username'];
@@ -33,15 +34,12 @@ export class LoginComponent {
     });
   }
 
-
+  
   onLogin() {
    
     if (this.loginForm.valid) {
       const { identifier, password } = this.loginForm.value;
-
-      // 🔐 Simulating authentication (Replace with real API)  
       this.signupservice.login(identifier,password).subscribe((data)=>{
-        
         this.signupservice.saveToken(data?.token);
         this.router.navigate(['/quiz']); 
       },(error) => {

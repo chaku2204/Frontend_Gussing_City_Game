@@ -6,11 +6,13 @@ import { QuizRoutingModule } from './quiz-routing.module';
 import { GameComponent } from './game/game.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { DashbordscoreComponent } from './dashbordscore/dashbordscore.component';
 
 @NgModule({
   declarations: [
   
-    GameComponent
+    GameComponent,
+   
   ],
   imports: [
 

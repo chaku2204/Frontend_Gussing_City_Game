@@ -6,6 +6,7 @@ import { map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { ScoreDialogComponent } from 'src/app/score-dialog/score-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthserviceService } from 'src/app/services/authservice.service';
 
  // Ensure it runs
 
@@ -36,7 +37,7 @@ export class GameComponent implements OnInit {
   username:any = "";
 
 
-  constructor(private quizService: CommonService, public dialog: MatDialog,private router: Router,private route: ActivatedRoute) {}
+  constructor(private quizService: CommonService, public dialog: MatDialog,private router: Router,private route: ActivatedRoute,private authservice:AuthserviceService) {}
 
   ngOnInit(): void {
     // this.route.queryParams.subscribe(params => {
@@ -56,7 +57,7 @@ export class GameComponent implements OnInit {
 
   startGame() {
     this.dissablebutton = false;
-    const user =this.quizService.getUser();
+    const user =this.authservice.getUser();
     this.username = user?user?.sub:"";
 
     this.quizService.startgame().subscribe((data) => {
@@ -128,7 +129,7 @@ export class GameComponent implements OnInit {
     });
   }
   logout(){
-    this.quizService.logout();
+    this.authservice.logout();
     this.router.navigate(['/auth/login']); 
   }
 

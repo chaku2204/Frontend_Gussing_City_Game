@@ -1,9 +1,10 @@
 import { CanActivateFn, Router } from '@angular/router';
-import { CommonService } from '../services/common.service';
+
 import { inject } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthserviceService } from '../services/authservice.service';
 export const authGuard: CanActivateFn = (route, state) => {
-  const authService = inject(CommonService);
+  const authService = inject(AuthserviceService);
   const router = inject(Router);
   const jwthelper = inject(JwtHelperService);
   const token = authService.getToken();

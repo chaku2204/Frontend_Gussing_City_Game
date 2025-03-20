@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { ScoreDialogComponent } from './score-dialog/score-dialog.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { DashbordscoreComponent } from './quiz/dashbordscore/dashbordscore.component';
 
 
 export function tokenGetter() {
@@ -17,7 +18,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    ScoreDialogComponent
+    ScoreDialogComponent,
+    DashbordscoreComponent
   ],
   imports: [
     HttpClientModule,
