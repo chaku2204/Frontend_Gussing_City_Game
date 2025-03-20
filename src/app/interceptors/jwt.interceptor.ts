@@ -9,6 +9,7 @@ import {
 import { catchError, Observable, throwError } from 'rxjs';
 import { CommonService } from '../services/common.service';
 import { Router } from '@angular/router';
+import { AuthserviceService } from '../services/authservice.service';
 
 
 
@@ -17,7 +18,7 @@ const TOKEN_HEADER_KEY = 'Authorization';
 export class JwtInterceptor implements HttpInterceptor {
 
 
-  constructor(private authService: CommonService,private router: Router) {}
+  constructor(private authService: AuthserviceService,private router: Router) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.authService.getToken();
